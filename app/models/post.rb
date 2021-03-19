@@ -4,12 +4,4 @@ class Post < ActiveRecord::Base
     belongs_to :user
     validates_presence_of :name, :content 
 
-    def tags_attributes=(tags_attributes)
-        binding.pry
-
-        tags_attributes.values.each do |tags_attribute|
-            tag = Tag.find_or_create_by(:name, tags_attribute[:name])
-            self.post_tags.build(tag: tag)
-        end
-    end
 end
